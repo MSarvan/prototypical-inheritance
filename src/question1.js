@@ -6,8 +6,7 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
     brand,
     reviews,
     price,
-    rating,
-    
+    rating, 
   };
 
   obj.getPrice = function () {
@@ -90,7 +89,7 @@ CreateProduct2.prototype.isExpensive = function () {
 //   1799,
 //   "4.3"
 // );
-// console.log(product2);
+// console.log(product2, 'product2');
 // console.log(product2.getPrice()); // 1799
 // console.log(product2.increasePrice(301)); //2100
 // console.log(product2.isExpensive()); // true
@@ -98,7 +97,37 @@ CreateProduct2.prototype.isExpensive = function () {
 // console.log(product2.isExpensive()); // false
 
 //Problem 3. `CreateProduct3` class
-class CreateProduct3 {}
+class CreateProduct3 {
+  constructor(product_name, brand, reviews, price, rating) {
+    this.product_name = product_name;
+    this.brand = brand;
+    this.reviews = reviews;
+    this.price = price;
+    this.rating = rating;
+  }
+
+  getPrice() {
+    return this.price;
+  }
+
+  increasePrice(val) {
+    this.price = this.price + val;
+    return this.price;
+  }
+
+  decreasePrice(val) {
+    this.price = this.price - val;
+    return this.price;
+  }
+
+  isExpensive() {
+    if (this.price > 1000) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 // //Example invocation
 //  let product3 = new CreateProduct3("Black Pure Cotton Formal Shirt","Peter England Elite", 224, 1799, "4.3")
 //  console.log(product3)

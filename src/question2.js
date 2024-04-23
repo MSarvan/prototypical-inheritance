@@ -34,6 +34,7 @@ const foodDeliveryService = {
   
   // Level-Problem 7-1
   function findDetails(foodDeliveryService) {
+    
   }
   // console.log(findDetails(foodDeliveryService).pizzaAvailable); // 20
   // console.log(findDetails(foodDeliveryService).burgerAvailable); // 25
