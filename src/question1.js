@@ -31,8 +31,14 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
 }
 
 // // Example invocation
-// let product1 = CreateProduct1("Black Pure Cotton Formal Shirt","Peter England Elite", 224, 1799, "4.3")
-// console.log(product1)
+let product1 = CreateProduct1(
+  "Black Pure Cotton Formal Shirt",
+  "Peter England Elite",
+  224,
+  1799,
+  "4.3"
+);
+// console.log(product1);
 //Output = {
 //   product_name: 'Black Pure Cotton Formal Shirt',
 //   brand: 'Peter England Elite',
@@ -40,25 +46,57 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
 //   price: 1799,
 //   rating: '4.3'
 // }
-// console.log(product1.getPrice()) // 1799
-// console.log(product1.increasePrice(301)) //2100
-// console.log(product1.isExpensive()) // true
-// console.log(product1.decreasePrice(1200)) // 900
-// console.log(product1.isExpensive()) // false
+// console.log(product1.getPrice()); // 1799
+// console.log(product1.increasePrice(301)); //2100
+// console.log(product1.isExpensive()); // true
+// console.log(product1.decreasePrice(1200)); // 900
+// console.log(product1.isExpensive()); // false
 
 // Problem 2. `CreateProduct2` constructor function
-function CreateProduct2() {
-  
+function CreateProduct2(product_name, brand, reviews, price, rating) {
+  this.product_name = product_name;
+  this.brand = brand;
+  this.reviews = reviews;
+  this.price = price;
+  this.rating = rating;
 }
 
+CreateProduct2.prototype.getPrice = function () {
+  return this.price;
+};
+
+CreateProduct2.prototype.increasePrice = function (val) {
+  this.price = this.price + val;
+  return this.price;
+};
+
+CreateProduct2.prototype.decreasePrice = function (val) {
+  this.price = this.price - val;
+    return this.price;
+};
+
+CreateProduct2.prototype.isExpensive = function () {
+  if (this.price > 1000) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 // //Example invocation
-// let product2 = new CreateProduct2("Black Pure Cotton Formal Shirt","Peter England Elite", 224, 1799, "4.3")
-// console.log(product2)
-// console.log(product2.getPrice()) // 1799
-// console.log(product2.increasePrice(301)) //2100
-// console.log(product2.isExpensive()) // true
-// console.log(product2.decreasePrice(1200)) // 900
-// console.log(product2.isExpensive()) // false
+// let product2 = new CreateProduct2(
+//   "Black Pure Cotton Formal Shirt",
+//   "Peter England Elite",
+//   224,
+//   1799,
+//   "4.3"
+// );
+// console.log(product2);
+// console.log(product2.getPrice()); // 1799
+// console.log(product2.increasePrice(301)); //2100
+// console.log(product2.isExpensive()); // true
+// console.log(product2.decreasePrice(1200)); // 900
+// console.log(product2.isExpensive()); // false
 
 //Problem 3. `CreateProduct3` class
 class CreateProduct3 {}
@@ -95,10 +133,21 @@ let arr = [
   },
 ];
 
-function findTotal(arr) {}
+function findTotal(arr) {
+  arr.forEach(element => {
+    let total = 0;
+    element.subjects.forEach((subject) => {
+      for (let mark of Object.values(subject)) {
+        total += parseInt(mark); 
+      }
+    })
+    element.total = total;
+  });
+  return arr;
+}
 
 // //Example invocation
-//console.log(findTotal(arr));
+// console.log(findTotal(arr));
 // [
 //   {
 //     name: 'student1',
@@ -121,7 +170,9 @@ const user = {
   city: "New York",
 };
 
-function removeKeyValuePair(user, keyToRemove) {}
+function removeKeyValuePair(user, keyToRemove) {
+  
+}
 
 //Example usage
 //  console.log(removeKeyValuePair(user, "city"));//{ name: 'john', password: 'john@11', id: '7468uwe' }
