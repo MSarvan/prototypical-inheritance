@@ -7,25 +7,30 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
     reviews,
     price,
     rating,
-    getPrice: function () {
-      return obj.price;
-    },
-    increasePrice: function (val) {
-      obj.price = obj.price + val;
-      return obj.price;
-    },
-    decreasePrice: function (val) {
-      obj.price = obj.price - val;
-      return obj.price;
-    },
-    isExpensive: function () {
-      if (obj.price > 1000) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+    
   };
+
+  obj.getPrice = function () {
+    return obj.price;
+  }
+
+  obj.increasePrice = function (val) {
+    obj.price = obj.price + val;
+    return obj.price;
+  }
+
+  obj.decreasePrice = function (val) {
+    obj.price = obj.price - val;
+    return obj.price;
+  }
+
+  obj.isExpensive = function () {
+    if (obj.price > 1000) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return obj;
 }
@@ -474,9 +479,32 @@ let exampleInputArray2 = [
 
 //Example Invocation
 let obj2 = massageArray(exampleInputArray);
-console.log(JSON.stringify(obj2));
+// console.log(JSON.stringify(obj2));
 
-function massageArray(inputArray) {}
+function mapIngredients(meal) {
+  const ingredients = [];
+  for (let i = 1; i <= 20; i++) {
+    const ingredientKey = `strIngredient${i}`;
+    const measureKey = `strMeasure${i}`;
+    const ingredient = meal[ingredientKey];
+    const measure = meal[measureKey];
+    if (ingredient && measure) {
+      ingredients.push({ ingredient, measure });
+    }
+  }
+  return ingredients;
+};
+
+function massageArray(inputArray) {
+  let output = inputArray.map(item => ({
+    productId: item.idMeal,
+    productTitle: item.strMeal,
+    Category: categoriesDirectory[item.Category],
+    Area: areasDirectory[item.Area],
+    Ingredients: mapIngredients(item),
+  }))
+  return output;
+}
 
 //don't remove below export statement part
 export {
