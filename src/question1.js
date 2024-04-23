@@ -31,13 +31,7 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
 }
 
 // // Example invocation
-let product1 = CreateProduct1(
-  "Black Pure Cotton Formal Shirt",
-  "Peter England Elite",
-  224,
-  1799,
-  "4.3"
-);
+// let product1 = CreateProduct1("Black Pure Cotton Formal Shirt", "Peter England Elite", 224, 1799, "4.3");
 // console.log(product1);
 //Output = {
 //   product_name: 'Black Pure Cotton Formal Shirt',
@@ -72,7 +66,7 @@ CreateProduct2.prototype.increasePrice = function (val) {
 
 CreateProduct2.prototype.decreasePrice = function (val) {
   this.price = this.price - val;
-    return this.price;
+  return this.price;
 };
 
 CreateProduct2.prototype.isExpensive = function () {
@@ -134,13 +128,13 @@ let arr = [
 ];
 
 function findTotal(arr) {
-  arr.forEach(element => {
+  arr.forEach((element) => {
     let total = 0;
     element.subjects.forEach((subject) => {
       for (let mark of Object.values(subject)) {
-        total += parseInt(mark); 
+        total += parseInt(mark);
       }
-    })
+    });
     element.total = total;
   });
   return arr;
@@ -171,7 +165,8 @@ const user = {
 };
 
 function removeKeyValuePair(user, keyToRemove) {
-  
+  const { [keyToRemove]: keyValue, ...obj } = user;
+  return obj;
 }
 
 //Example usage
