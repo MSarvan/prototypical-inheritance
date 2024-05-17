@@ -17,6 +17,7 @@ function CreateProduct1(product_name, brand, reviews, price, rating) {
     obj.price = obj.price + val;
     return obj.price;
   }
+  
 
   obj.decreasePrice = function (val) {
     obj.price = obj.price - val;
